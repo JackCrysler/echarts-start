@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #chart {
+        width: 500px;
+        height: 300px;
+    }
+</style>
+
+<body>
+    <div id="chart"></div>
+    <script src="./echarts.js"></script>
+    <script>
+        let chart = document.querySelector('#chart');
+        let api = echarts.init(chart)
+        option = {
+            title: {
+                text: '企业健康报告',
+            },
+            axisPointer:{
+                show:false
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月'],
+                show: false
+            },
+            yAxis: [{
+                type: 'value',
+                show: false
+            }],
+            legend:{
+                right:10,
+                data:[
+                    {
+                        name:"我的数据",
+                        icon:'circle'
+                    },
+                    {
+                        name:"行业平均",
+                        icon:'circle'                        
+                    }
+                ],
+                textStyle: {fontSize: 18,}
+            },
+            grid:{
+                show:false, 
+                left:10,
+                right:10,
+                top:50,
+                bottom:10
+            },
+            series: [
+                {
+                    name: '我的数据',
+                    type: 'line',
+                    data: [{value:1,symbol:'none'}, 4, 3, 6, 5,
+                     {
+                        value: 9, symbol: 'circle', symbolSize: 15, itemStyle: {
+                            normal: {
+                                color: '#86dbf4',
+                                borderWidth: 5,
+                                borderColor: '#fff',
+                                shadowColor: '#ccc',
+                                shadowBlur: 20
+                            }
+                        },
+                        label: {
+                            normal: {
+                                color: '#f00',
+                                show: true,
+                                offset: [0, 50],
+                                formatter: '{a|本月}',
+                                rich: {
+                                    a: {
+                                        color: '#000',
+                                        lineHeight: 10,
+                                        fontSize: 20,
+                                    }
+                                }
+                            }
+                        }
+                    }, {value:8,symbol:'none'}],
+                    color: ['#86dbf4'],
+                    symbol: 'circle',
+                    symbolSize: 10
+                }, {
+                    name: '行业平均',
+                    type: 'line',
+                    data: [1.5, 3, 2, 9, 4, 3, 4],
+                    color: ['#ffc39e'],
+                    showSymbol:false
+                }
+            ]
+
+        };
+        api.setOption(option);
+    </script>
+</body>
+
+</html>

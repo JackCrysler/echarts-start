@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<canvas id="dashboard" width="800" height="500"></canvas>
+
+	<script src="./echarts.js"></script>
+	<script>
+		var dashboard = document.querySelector("#dashboard");
+
+		var api = echarts.init(dashboard);
+
+		api.setOption({
+			series: [
+		        {
+		            name: '业务指标',
+		            type: 'gauge',
+		            radius:'65%',
+		            splitNumber:2,
+		            max:1324,
+		            min:0,
+		            detail: {
+		            	formatter:'{value}天',
+		            	offsetCenter:[0,"-5%"],
+		            	fontSize:40
+		            },
+		            data: [{
+		            	value:662,
+		            	symbolOffset:[0,"50%"]
+		            }],
+		            pointer:{
+		            	show:false
+		            },
+		            axisLine: {
+		                lineStyle: {
+		                    color: [[0.5, '#1e90ff'],[1, '#ccc']],
+		                    width: 0
+		                }
+		            },
+		            axisLabel: {
+		                show:false
+		            },
+		            axisTick: {
+		                length :35,
+		                lineStyle: {
+		                    color: 'auto',
+		                    width:2
+		                },
+		                splitNumber:21
+		            } ,
+		            splitLine: {
+		            	length: 45,
+		                lineStyle: {
+		                    color: 'auto'
+		                }
+		            }
+		        },
+		        {
+		            name: '业务指标',
+		            type: 'gauge',
+		            radius:'40%',
+		            splitNumber:4,
+		            detail: {
+		            	show:false
+		            },
+		            pointer:{
+		            	show:false
+		            },
+		            axisLine: {
+		                lineStyle: {
+		                    color: "#666",
+		                    width: 0
+		                }
+		            },
+		            axisLabel: {
+		                show:false
+		            },
+		            axisTick: {
+		                length :8,
+		                lineStyle: {
+		                    color: '#666',
+		                    width:2
+		                },
+		                splitNumber:10
+		            } ,
+		            splitLine: {
+		            	length: 20,
+		                lineStyle: {
+		                    color: '#666'
+		                }
+		            }
+		        }
+		    ]
+		})
+	</script>
+</body>
+</html>

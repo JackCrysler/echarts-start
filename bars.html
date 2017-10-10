@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="bar" width="600" height="500"></canvas>
+    <script src="./echarts.js"></script>
+    <script>
+        let bar = document.querySelector('#bar');
+        let api = echarts.init(bar);
+        api.setOption({
+
+            xAxis: [{
+                type: 'category',
+                axisTick: false,
+                data: ['商标', '专利', '著作权', '行政审批'],
+                axisLabel: {
+                    fontSize: 24,
+                    fontFamily: 'microsoft yahei'
+                },
+                axisLine: {
+                    show: false
+                }
+
+            }],
+            yAxis: [{
+                type: 'value',
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                splitLine: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                }
+            }],
+            barWidth: 12,
+            barGap: '90%',
+            //barCategoryGap:'10%',
+            series: [
+                {
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    { offset: 0, color: '#83bff6' },
+                                    { offset: 0.5, color: '#7eddf9' },
+                                    { offset: 1, color: '#77fcff' }
+                                ]
+                            ),
+                            barBorderRadius: 12
+                        }
+                    },
+                    data: [10, 20, 30, 40]
+                },
+                {
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    { offset: 0, color: '#ff6794' },
+                                    { offset: 0.5, color: '#ff8a7f' },
+                                    { offset: 1, color: '#ffa56e' }
+                                ]
+                            ),
+                            barBorderRadius: 12
+                        }
+                    },
+                    data: [5, 15, 25, 30]
+                }
+            ]
+        })
+
+    </script>
+</body>
+
+</html>
